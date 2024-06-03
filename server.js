@@ -24,6 +24,15 @@ app.use(express.json())
 app.use(cors())
 
 
+app.get('/', async (request, response)=>{
+    try {
+        response.render('index.ejs')
+    } catch (error){
+        response.status(500).send({message: error.message})
+    }
+})
+
+
 
     app.listen(process.env.PORT || PORT, () => {
         console.log(`Server is running on port ${process.env.PORT}`)
